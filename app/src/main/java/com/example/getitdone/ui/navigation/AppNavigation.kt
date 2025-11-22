@@ -29,8 +29,14 @@ fun AppNavigation() {
         composable(Screen.Mood.route) {
             com.example.getitdone.ui.mood.MoodScreen(navController)
         }
+        composable(Screen.Motivation.route) {
+            com.example.getitdone.ui.motivation.MotivationScreen(navController)
+        }
         composable(Screen.Settings.route) {
             com.example.getitdone.ui.settings.SettingsScreen(navController)
+        }
+        composable(Screen.CategoryManagement.route) {
+            com.example.getitdone.ui.category.CategoryManagementScreen(navController)
         }
     }
 }

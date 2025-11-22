@@ -7,5 +7,7 @@ sealed class Screen(val route: String) {
     object Pet : Screen("pet")
     object Calendar : Screen("calendar")
     object Mood : Screen("mood")
+    object Motivation : Screen("motivation")
     object Settings : Screen("settings")
+    object CategoryManagement : Screen("category_management")
 }

@@ -63,7 +63,12 @@ fun SettingsScreen(
             Divider()
 
             Text("Categories", style = MaterialTheme.typography.titleLarge)
-            Text("Category management coming soon...", style = MaterialTheme.typography.bodyMedium)
+            Button(
+                onClick = { navController.navigate(com.example.getitdone.ui.navigation.Screen.CategoryManagement.route) },
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text("Manage Categories")
+            }
         }
     }
 }

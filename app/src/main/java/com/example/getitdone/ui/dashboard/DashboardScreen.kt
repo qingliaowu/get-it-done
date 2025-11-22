@@ -8,6 +8,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Face
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Star
@@ -35,6 +36,7 @@ fun DashboardScreen(navController: NavController) {
         DashboardItem("My Pet", Icons.Default.Face, Screen.Pet.route),
         DashboardItem("Calendar", Icons.Default.DateRange, Screen.Calendar.route),
         DashboardItem("Mood Tracker", Icons.Default.Star, Screen.Mood.route),
+        DashboardItem("Motivation", Icons.Default.Favorite, Screen.Motivation.route),
         DashboardItem("Settings", Icons.Default.Settings, Screen.Settings.route)
     )
 
