@@ -10,5 +10,6 @@ data class TaskEntity(
     val description: String,
     val isCompleted: Boolean = false,
     val dueDate: Long? = null,
-    val categoryId: Int? = null
+    val categoryId: Int? = null,
+    val pomodoroCount: Int = 0
 )

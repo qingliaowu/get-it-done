@@ -65,6 +65,17 @@ I have implemented the "Get It Done" Android application with all the requested 
 - **Action**: Go back to Dashboard.
 - **Verify**: The "Calendar" card is hidden.
 
+### 9. Pomodoro Timer
+- **Action**: Go to "To-Do List".
+- **Verify**: Each task has a "Play" (Pomodoro) icon.
+- **Action**: Click the "Play" icon on a task.
+- **Verify**: Navigates to the Pomodoro Timer screen.
+- **Action**: Click "Start".
+- **Verify**: Timer starts counting down.
+- **Action**: Click "Pause" and "Reset".
+- **Verify**: Timer pauses and resets to 25:00.
+- **Note**: When the timer finishes, the task's Pomodoro count will increment (visible in the task list).
+
 ## Architecture Notes
 - **MVVM**: Used for all screens.
 - **Room Database**: Persists Tasks, Habits, Pet State, Mood Logs, and Categories.

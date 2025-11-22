@@ -20,7 +20,7 @@ import com.example.getitdone.data.entity.MoodEntity
         PetEntity::class,
         MoodEntity::class
     ],
-    version = 1
+    version = 2
 )
 abstract class AppDatabase : RoomDatabase() {
     abstract fun taskDao(): com.example.getitdone.data.dao.TaskDao

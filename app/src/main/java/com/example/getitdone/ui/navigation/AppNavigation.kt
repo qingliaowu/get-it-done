@@ -41,5 +41,11 @@ fun AppNavigation() {
         composable(Screen.DashboardConfig.route) {
             com.example.getitdone.ui.dashboard.DashboardConfigScreen(navController)
         }
+        composable(
+            route = Screen.Pomodoro.route,
+            arguments = listOf(navArgument("taskId") { type = NavType.IntType })
+        ) {
+            com.example.getitdone.ui.pomodoro.PomodoroScreen(navController)
+        }
     }
 }
