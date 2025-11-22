@@ -11,6 +11,4 @@ val MIGRATION_1_2 = object : Migration(1, 2) {
 }
 
 // List of all migrations
-val ALL_MIGRATIONS = arrayOf(
-    // MIGRATION_1_2
-)
+val ALL_MIGRATIONS = arrayOf<Migration>()
