@@ -74,7 +74,14 @@ I have implemented the "Get It Done" Android application with all the requested 
 - **Verify**: Timer starts counting down.
 - **Action**: Click "Pause" and "Reset".
 - **Verify**: Timer pauses and resets to 25:00.
+- **Verify**: Timer pauses and resets to 25:00.
 - **Note**: When the timer finishes, the task's Pomodoro count will increment (visible in the task list).
+
+### 10. UI/UX Verification
+- **Verify**: Dashboard has a gradient background and glassmorphism cards.
+- **Verify**: To-Do List has a gradient background and modern card styling.
+- **Verify**: Pet Screen has a large card and animated progress bars.
+- **Verify**: Pomodoro Screen has a large circular progress indicator.
 
 ## Architecture Notes
 - **MVVM**: Used for all screens.
