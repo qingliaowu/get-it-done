@@ -12,8 +12,7 @@ fun AppNavigation() {
 
     NavHost(navController = navController, startDestination = Screen.Dashboard.route) {
         composable(Screen.Dashboard.route) {
-            // DashboardScreen(navController)
-            Text("Dashboard Placeholder")
+            com.example.getitdone.ui.dashboard.DashboardScreen(navController)
         }
         composable(Screen.TaskList.route) {
             com.example.getitdone.ui.task.TaskListScreen(navController)
@@ -22,20 +21,16 @@ fun AppNavigation() {
             com.example.getitdone.ui.habit.HabitListScreen(navController)
         }
         composable(Screen.Pet.route) {
-            // PetScreen(navController)
-            Text("Pet Placeholder")
+            com.example.getitdone.ui.pet.PetScreen(navController)
         }
         composable(Screen.Calendar.route) {
-            // CalendarScreen(navController)
-            Text("Calendar Placeholder")
+            com.example.getitdone.ui.calendar.CalendarScreen(navController)
         }
         composable(Screen.Mood.route) {
-            // MoodScreen(navController)
-            Text("Mood Placeholder")
+            com.example.getitdone.ui.mood.MoodScreen(navController)
         }
         composable(Screen.Settings.route) {
-            // SettingsScreen(navController)
-            Text("Settings Placeholder")
+            com.example.getitdone.ui.settings.SettingsScreen(navController)
         }
     }
 }
