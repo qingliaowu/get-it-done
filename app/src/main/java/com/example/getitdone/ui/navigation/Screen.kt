@@ -11,4 +11,7 @@ sealed class Screen(val route: String) {
     object Settings : Screen("settings")
     object CategoryManagement : Screen("category_management")
     object DashboardConfig : Screen("dashboard_config")
+    object Pomodoro : Screen("pomodoro/{taskId}") {
+        fun createRoute(taskId: Int) = "pomodoro/$taskId"
+    }
 }

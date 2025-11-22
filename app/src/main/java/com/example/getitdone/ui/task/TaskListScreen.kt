@@ -5,7 +5,9 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -43,8 +45,13 @@ fun TaskListScreen(
             items(tasks) { task ->
                 TaskItem(
                     task = task,
-                    onCheckedChange = { viewModel.toggleTaskCompletion(task) },
-                    onDelete = { viewModel.deleteTask(task) }
+                    onCheckedChange = { isChecked ->
+                        viewModel.updateTask(task.copy(isCompleted = isChecked))
+                    },
+                    onDeleteClick = { viewModel.deleteTask(task) },
+                    onPomodoroClick = {
+                        navController.navigate(Screen.Pomodoro.createRoute(task.id))
+                    }
                 )
             }
         }
@@ -63,9 +70,10 @@ fun TaskListScreen(
 
 @Composable
 fun TaskItem(
-    task: com.example.getitdone.data.entity.TaskEntity,
+    task: TaskEntity,
     onCheckedChange: (Boolean) -> Unit,
-    onDelete: () -> Unit
+    onDeleteClick: (TaskEntity) -> Unit,
+    onPomodoroClick: (TaskEntity) -> Unit
 ) {
     Card(
         modifier = Modifier.fillMaxWidth(),
@@ -84,7 +92,8 @@ fun TaskItem(
             Column(modifier = Modifier.weight(1f).padding(start = 8.dp)) {
                 Text(
                     text = task.title,
-                    style = MaterialTheme.typography.titleMedium
+                    style = MaterialTheme.typography.bodyLarge,
+                    textDecoration = if (task.isCompleted) TextDecoration.LineThrough else null
                 )
                 if (task.description.isNotEmpty()) {
                     Text(
@@ -92,8 +101,18 @@ fun TaskItem(
                         style = MaterialTheme.typography.bodySmall
                     )
                 }
+                if (task.pomodoroCount > 0) {
+                    Text(
+                        text = "🍅 x ${task.pomodoroCount}",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.secondary
+                    )
+                }
             }
-            IconButton(onClick = onDelete) {
+            IconButton(onClick = { onPomodoroClick(task) }) {
+                Icon(Icons.Default.PlayArrow, contentDescription = "Start Pomodoro")
+            }
+            IconButton(onClick = { onDeleteClick(task) }) {
                 Icon(Icons.Default.Delete, contentDescription = "Delete")
             }
         }
