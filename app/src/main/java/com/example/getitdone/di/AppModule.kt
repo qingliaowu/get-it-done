@@ -10,6 +10,8 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
+import com.example.getitdone.data.db.ALL_MIGRATIONS
+
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
@@ -21,7 +23,9 @@ object AppModule {
             context,
             AppDatabase::class.java,
             "get_it_done_db"
-        ).build()
+        )
+        .addMigrations(*ALL_MIGRATIONS)
+        .build()
     }
 
     @Provides

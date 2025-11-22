@@ -22,23 +22,23 @@ import androidx.navigation.NavController
 import com.example.getitdone.ui.navigation.Screen
 
 data class DashboardItem(
+    val id: String,
     val title: String,
     val icon: ImageVector,
     val route: String
 )
 
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.hilt.navigation.compose.hiltViewModel
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DashboardScreen(navController: NavController) {
-    val items = listOf(
-        DashboardItem("To-Do List", Icons.Default.List, Screen.TaskList.route),
-        DashboardItem("Habit Tracker", Icons.Default.CheckCircle, Screen.HabitList.route),
-        DashboardItem("My Pet", Icons.Default.Face, Screen.Pet.route),
-        DashboardItem("Calendar", Icons.Default.DateRange, Screen.Calendar.route),
-        DashboardItem("Mood Tracker", Icons.Default.Star, Screen.Mood.route),
-        DashboardItem("Motivation", Icons.Default.Favorite, Screen.Motivation.route),
-        DashboardItem("Settings", Icons.Default.Settings, Screen.Settings.route)
-    )
+fun DashboardScreen(
+    navController: NavController,
+    viewModel: DashboardViewModel = hiltViewModel()
+) {
+    val items by viewModel.visibleItems.collectAsState()
 
     Scaffold(
         topBar = {

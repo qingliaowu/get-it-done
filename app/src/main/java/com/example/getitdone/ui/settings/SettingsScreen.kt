@@ -18,6 +18,7 @@ fun SettingsScreen(
 ) {
     val backupStatus by viewModel.backupStatus.collectAsState()
     val exportStatus by viewModel.exportStatus.collectAsState()
+    val currentTheme by viewModel.currentTheme.collectAsState()
 
     Scaffold(
         topBar = {
@@ -38,6 +39,30 @@ fun SettingsScreen(
                 .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
+            Text("Appearance", style = MaterialTheme.typography.titleLarge)
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceEvenly
+            ) {
+                FilterChip(
+                    selected = currentTheme == "SYSTEM",
+                    onClick = { viewModel.setTheme("SYSTEM") },
+                    label = { Text("System") }
+                )
+                FilterChip(
+                    selected = currentTheme == "LIGHT",
+                    onClick = { viewModel.setTheme("LIGHT") },
+                    label = { Text("Light") }
+                )
+                FilterChip(
+                    selected = currentTheme == "DARK",
+                    onClick = { viewModel.setTheme("DARK") },
+                    label = { Text("Dark") }
+                )
+            }
+
+            Divider()
+
             Text("Data Management", style = MaterialTheme.typography.titleLarge)
             
             Button(
@@ -58,6 +83,16 @@ fun SettingsScreen(
             }
             if (exportStatus != null) {
                 Text(text = exportStatus!!, color = MaterialTheme.colorScheme.primary)
+            }
+
+            Divider()
+            
+            Text("Dashboard", style = MaterialTheme.typography.titleLarge)
+            Button(
+                onClick = { navController.navigate(com.example.getitdone.ui.navigation.Screen.DashboardConfig.route) },
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text("Customize Dashboard")
             }
 
             Divider()

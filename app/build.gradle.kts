@@ -75,6 +75,9 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
     
+    // DataStore
+    implementation(libs.androidx.datastore.preferences)
+    
     // Gson
     implementation(libs.gson)
 

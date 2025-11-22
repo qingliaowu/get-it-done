@@ -7,16 +7,28 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import com.example.getitdone.data.repository.UserPreferencesRepository
 import javax.inject.Inject
 
 @HiltViewModel
-class SettingsViewModel @Inject constructor() : ViewModel() {
+class SettingsViewModel @Inject constructor(
+    private val userPreferencesRepository: UserPreferencesRepository
+) : ViewModel() {
+
+    val currentTheme: StateFlow<String> = userPreferencesRepository.theme
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), "SYSTEM")
 
     private val _backupStatus = MutableStateFlow<String?>(null)
     val backupStatus: StateFlow<String?> = _backupStatus
 
     private val _exportStatus = MutableStateFlow<String?>(null)
     val exportStatus: StateFlow<String?> = _exportStatus
+
+    fun setTheme(theme: String) {
+        viewModelScope.launch {
+            userPreferencesRepository.setTheme(theme)
+        }
+    }
 
     fun performCloudBackup() {
         viewModelScope.launch {

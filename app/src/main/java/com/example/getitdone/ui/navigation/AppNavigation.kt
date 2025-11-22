@@ -38,5 +38,8 @@ fun AppNavigation() {
         composable(Screen.CategoryManagement.route) {
             com.example.getitdone.ui.category.CategoryManagementScreen(navController)
         }
+        composable(Screen.DashboardConfig.route) {
+            com.example.getitdone.ui.dashboard.DashboardConfigScreen(navController)
+        }
     }
 }

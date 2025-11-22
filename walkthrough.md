@@ -58,9 +58,17 @@ I have implemented the "Get It Done" Android application with all the requested 
 - **Action**: Click "Export Data". Verify the success message after a delay.
 - **Action**: Click "Manage Categories".
 - **Verify**: You can add and delete categories.
+- **Action**: Under "Appearance", select "Dark" or "Light".
+- **Verify**: The app theme changes immediately.
+- **Action**: Click "Customize Dashboard".
+- **Action**: Toggle off "Calendar".
+- **Action**: Go back to Dashboard.
+- **Verify**: The "Calendar" card is hidden.
 
 ## Architecture Notes
 - **MVVM**: Used for all screens.
 - **Room Database**: Persists Tasks, Habits, Pet State, Mood Logs, and Categories.
+- **DataStore**: Persists Theme and Dashboard Config.
 - **Hilt**: Handles dependency injection.
 - **Compose**: Fully declarative UI.
+- **Migrations**: Infrastructure set up in `Migrations.kt` for future schema changes.
